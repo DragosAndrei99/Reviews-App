@@ -1,0 +1,32 @@
+div.grid-container.newsletter-and-contact-div
+    div.cloud1-div
+      img(src="images/Vector (1).png", alt="")
+    div.form-div
+      h1.newsletter-header Sign up to our newsletter!
+      p.newsletter-text Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sollicitudin sapien et ex sagittis eleifend ut.
+      form(method='POST' action='/newsletter-sign-up')
+        input.newsletter-input.form-control(type='text' aria-describedby='emailHelp' placeholder='email address' name='newsletter')
+        a.btn.newsletter-btn(type='submit') Subscribe
+
+    div.cloud2-div
+      img.cloud2(src="images/Vector.png", alt="")
+    div.grid-container.contact-div 
+      div.app-logo
+        img(src="", alt="App Logo")
+        span App name
+      div.bottom-menu-div
+        a.bottom-menu(href='/') Home
+        br
+        a.bottom-menu(href='#about') About
+        br
+        a.bottom-menu(href='#features') Features
+        br
+        a.bottom-menu(href='#faq') FAQ
+        br
+        a.bottom-menu(href='/sign-up') Sign up
+        br
+      div.contact-info
+        p.bottom-menu(href='/')  Follow me
+      hr
+      div.page-end
+        p 2022. All rights reserved

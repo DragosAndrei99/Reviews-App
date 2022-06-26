@@ -1,0 +1,16 @@
+nav.navbar.navbar-expand-lg.navbar-light
+    if isAuth === true
+      img(src=profilePic, alt="App Logo").profile-img
+      p.navbar-brand.profile-name=username
+    else 
+      a.navbar-brand(href='/') App name
+    div.navbar-2nd
+      a#home.navbar-brand(href='/') Home
+      a.navbar-brand(href='#about') About
+      a.navbar-brand(href='#features') Features
+      a.navbar-brand(href='#faq') FAQ
+      if isAuth === true
+        a.navbar-brand.orange-button#loginButton(href='/logout') Logout
+      else 
+        a.navbar-brand.orange-button#loginButton(href='/reviewApp') Login
+

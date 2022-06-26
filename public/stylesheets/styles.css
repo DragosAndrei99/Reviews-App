@@ -1,0 +1,358 @@
+body {
+    font-family: 'Circular Std';
+    font-style: normal;
+    background-color: #fefae0;
+}
+
+.navbar-brand {
+    margin-top: 20px;
+    margin-left: 5%;
+}
+
+.profile-img {
+    border-radius: 40px;
+    max-width: 3%;
+    margin-left: 3%;
+}
+.profile-name {
+    margin:2%;
+    padding: 0;
+}
+#home {
+    color:#ff6100;
+}
+.navbar-brand {
+    font-weight: 550;
+}
+
+.navbar-2nd {
+    margin-left: 55%;
+}
+.grid-container {
+    display: grid;
+    column-gap: 50px;
+}
+
+.presentation-div {
+    margin-top: 100px;
+    margin-left: 150px;
+    grid-column-start: 1;
+    grid-column-end: 1;
+}
+
+.bird-img {
+    margin-bottom: 150px;
+    margin-left: 50%;
+}
+
+.image-div{
+    text-align: center;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    margin-right: 30px;
+}
+
+.home-page-img {
+    margin-top: 100px;
+    border-radius: 40px;
+    height: auto;
+    max-width: 100%;
+}
+
+.steps-container{
+    font-size:larger;
+    padding-top: 2%;
+    background-image: url("/images/Ellipse 4.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left:10%;
+    margin-right:10%;
+    margin-top:100px;
+}
+.desgined-by-div{
+    margin-top: 150px;
+    text-align: center;
+}
+
+.step-1{
+    text-align: center;
+    grid-row-start:2;
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+.step-2{
+    text-align: center;
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+.step-3{
+    text-align: center;
+    grid-row-start:2;
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+.orange-button {
+    border-radius: 20px;
+    background-color: #ff6100;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 80%;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+    padding: 18px;
+    width: 230px;
+}
+
+.steps-imgs {
+    max-width: 60%;
+    border-radius: 5%;
+
+}
+
+.features-div {
+    color: white;
+    background-color: #FF6100;
+}
+.title-features {
+    margin-left:10%;
+    margin-bottom: 25%;
+    margin-top:5%;
+}
+
+.text1-features {
+    margin-left:10%;
+    grid-row-start:2;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    margin-bottom: 10%;
+
+}   
+.text2-features {
+    grid-row-start:2;
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+.img-features{
+    margin-top:20%;
+    grid-row-start:1;
+    grid-row-end: 4;
+    grid-column-start: 4;
+    grid-column-end: 5;
+}
+
+.faq-div {
+    display: grid;
+    background-color: #F5C9B0;
+    padding-top: 70px;
+}
+.faq-margins {
+    border-radius: 10px;
+    margin-left:15%;
+    margin-right:50%;
+    margin-bottom:4%;
+}
+#faq {
+    padding: 2%;
+    margin-right:15%;
+}
+.faq-show {
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);   
+    background-color: #ff6100;
+}
+.text-show {
+    margin-left:5%;
+    margin-top:2%;
+    display:block;
+    font-weight: 450;
+    font-size: 20px;
+    line-height: 150%;
+/* or 30px */
+}
+.faq-hidden {
+    display:none;
+
+}
+.animate {
+    animation: fadeIn 700ms ease-out backwards;
+  }
+  
+@keyframes fadeIn {
+    from {
+        transform: translateY(0px);
+        opacity: 0;
+    }
+    to  {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+.header-faq {
+    grid-row-start:1;
+
+}
+#faq-1 {
+    grid-row-start: 2;
+}
+#faq-2 {
+    grid-row-start: 3;
+
+}
+#faq-3 {
+    grid-row-start: 4;
+
+}
+#faq-4 {
+    grid-row-start: 5;
+
+}
+.h3-faq {
+    display: inline;
+    margin-left:5%;
+}
+.newsletter-and-contact-div {
+    background-color: #ff6100;
+    padding-top:200px;
+}
+.cloud1-div {
+    grid-row-start:1;
+    grid-column-start:1;
+}
+.form-div {
+    grid-row-start:1;
+    text-align: center;
+    padding-left: 28%;
+    padding-right: 28%;
+    grid-column-start:2;
+    grid-column-end:3;
+    color: #FFFFFF;
+
+}
+.cloud2-div{
+    grid-row-start:1;
+    grid-column-start:3;
+    grid-column-end:4;
+    padding-bottom:200px;
+
+}
+.cloud2 {
+    margin-left:25%;
+}
+.newsletter-header {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 72px;
+/* or 180% */
+    text-align: center;
+    letter-spacing: -0.04em;
+}
+.newsletter-text {
+    font-weight: 450;
+    font-size: 20px;
+    line-height: 150%;
+/* or 30px */
+}
+.newsletter-input {
+    display: inline;
+    width:70%;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid #FFFFFF;
+    border-radius:12px 0 0 12px;    
+    line-height: 40px;
+}
+.newsletter-input::placeholder {
+    font-weight: 450;
+    font-size: 20px;
+    line-height: 150%;
+    /* identical to box height, or 30px */
+    color: #FFFFFF;
+    opacity: 0.7;
+}
+.newsletter-btn {
+    line-height: 40px;
+    display: inline;
+    background: #FFFFFF;
+    border-radius: 0px 20px 20px 0px;
+    width:30%;
+    font-weight: 700;
+    font-size: 20px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.04em;
+    color: #FF6100;
+}
+.contact-div {
+    text-align: center;
+    padding-top: 10%;
+    background-color: #FFFFFF;
+    grid-column-start:1;
+    grid-column-end:4;
+    grid-row-start:2;
+}
+
+.app-logo {
+    grid-column-start:1;
+    grid-column-end:2;
+
+}
+.bottom-menu-div {
+    grid-column-start:2;
+}
+.contact-info {
+    grid-column-start: 3;
+}
+.bottom-menu {
+    font-weight: 450;
+    font-size: 25px;
+    line-height: 180%;
+    /* identical to box height, or 30px */
+    color: #000000;
+}
+hr {
+    width: 318%;
+}
+.page-end {
+    padding-top: 15%;
+    grid-row-start:3;
+    grid-column-start: 2;
+    font-weight: 450;
+    font-size: 20px;
+    line-height: 150%;
+/* identical to box height, or 30px */
+    color: rgba(39, 49, 80, 0.5);
+}
+/* HOMEPAGE */
+.homepage-div {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 100px;
+}
+.card-container {
+    margin-bottom: 7%;
+    background-color: #fdfff1;
+    border-radius: 10px;
+    -webkit-box-shadow: 4px 4px 12px 4px #F5C9B0;; 
+    box-shadow: 4px 4px 12px 4px #F5C9B0;;
+    padding: 3%;
+}
+.card-container:hover {
+    transform: scale(1.07);
+}
+
+.h3-inline {
+    display: inline;
+}
+
+.reviewerProfilePic{
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}

@@ -1,9 +1,22 @@
 const mongoose = require('mongoose');
 
-const testModelSchema = new mongoose.Schema({
-    test: String
+const reviewSchema = new mongoose.Schema({
+    locationName: String,
+    address: String,
+    reviewerProfilePicSrc: String,
+    reviewerName: String,
+    rating: Number,
+    reviewText: String,
+    reviewDate: String
 })
 
-const TestModel = mongoose.model('Test', testModelSchema, 'tests');
+const userSchema = new mongoose.Schema({
+    username: String,
+    userLocation: Object
+})
 
-module.exports = {TestModel}
+const Review = mongoose.model('Reviews', reviewSchema, 'reviews');
+const User = mongoose.model('Users', userSchema, 'users');
+
+
+module.exports = {Review, User}
