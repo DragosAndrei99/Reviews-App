@@ -13,6 +13,15 @@ divsArray.forEach(div =>{
     })
 });
 
+function myFunction() {
+    var x = document.getElementById("myTopNav");
+    if (x.className === "topnav") {
+      x.className += " responsive";
+    } else {
+      x.className = "topnav";
+    }
+}
+
 const mediaPhone = window.matchMedia("(max-width: 425px)");
 const mediaLaptop = window.matchMedia("(max-width: 1440px)");
 const mediaTablet = window.matchMedia("(max-width: 768px)");

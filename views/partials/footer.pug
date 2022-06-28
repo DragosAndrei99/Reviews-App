@@ -1,32 +1,42 @@
 div.grid-container.newsletter-and-contact-div
     div.cloud1-div
-      img(src="images/Vector (1).png", alt="")
+      img(src="images/Vector (1).png", alt="").clouds
     div.form-div
       h1.newsletter-header Sign up to our newsletter!
       p.newsletter-text Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sollicitudin sapien et ex sagittis eleifend ut.
       form(method='POST' action='/newsletter-sign-up')
-        input.newsletter-input.form-control(type='text' aria-describedby='emailHelp' placeholder='email address' name='newsletter')
+        input.form-control.newsletter-input(type='text' aria-describedby='emailHelp' placeholder='email address' name='newsletter')
         a.btn.newsletter-btn(type='submit') Subscribe
 
     div.cloud2-div
-      img.cloud2(src="images/Vector.png", alt="")
+      img.cloud2(src="images/Vector.png", alt="").clouds
     div.grid-container.contact-div 
       div.app-logo
         img(src="", alt="App Logo")
-        span App name
+        h6 App name
       div.bottom-menu-div
         a.bottom-menu(href='/') Home
         br
-        a.bottom-menu(href='#about') About
+        a.bottom-menu(href='/#about') About
         br
-        a.bottom-menu(href='#features') Features
+        a.bottom-menu(href='/#features') Features
         br
-        a.bottom-menu(href='#faq') FAQ
+        a.bottom-menu(href='/#faq') FAQ
         br
-        a.bottom-menu(href='/sign-up') Sign up
+        if isAuth == true
+          a.bottom-menu(href='/logout') Logout
+        else 
+          a.bottom-menu(href='/reviewApp') Login
         br
       div.contact-info
-        p.bottom-menu(href='/')  Follow me
+        a(href="https://www.facebook.com/vdragos1999") 
+          img(src="/images/facebook.png", alt="Facebook Logo").follow-me-img
+        a(href="https://www.linkedin.com/in/vasile-dragos/") 
+          img(src="/images/linkedin.png", alt="Linkedin Logo").follow-me-img
+        a(href="https://api.whatsapp.com/send?phone=40721425291") 
+          img(src="/images/whatsapp.png", alt="Whatsapp Logo").follow-me-img
+        a(href="mailto:vdragos1999@yahoo.com") 
+          img(src="/images/paper-plane.png", alt="E-mail Logos").follow-me-img
       hr
       div.page-end
         p 2022. All rights reserved

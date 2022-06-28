@@ -1,16 +1,16 @@
-nav.navbar.navbar-expand-lg.navbar-light
+nav.topnav#myTopNav
+  a#home.active(href='/') Home
+  a(href='/#about') About
+  a(href='/#features') Features
+  a(href='/#faq') FAQ
+  a(href="javascript:void(0)" onclick='myFunction()').icon
+    i.fa.fa-bars
+  div.second-navbar
     if isAuth === true
-      img(src=profilePic, alt="App Logo").profile-img
-      p.navbar-brand.profile-name=username
+      div.profile-div
+        img(src=profilePic, alt="App Logo").profile-img
+        span.username=username
+      a#loginButton(href='/logout') Logout
     else 
-      a.navbar-brand(href='/') App name
-    div.navbar-2nd
-      a#home.navbar-brand(href='/') Home
-      a.navbar-brand(href='#about') About
-      a.navbar-brand(href='#features') Features
-      a.navbar-brand(href='#faq') FAQ
-      if isAuth === true
-        a.navbar-brand.orange-button#loginButton(href='/logout') Logout
-      else 
-        a.navbar-brand.orange-button#loginButton(href='/reviewApp') Login
+      a#loginButton(href='/reviewApp') Login
 

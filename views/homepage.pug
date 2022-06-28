@@ -3,9 +3,10 @@ extends layout.pug
 block content
     - var values = reviews
     div.homepage-navigation
-        button Categories 
-        button#get-location Reviews of locations close to you
-
+        if values.length < 1
+            h1 Welcome to my app
+            h5 Please allow location for this site to get started
+            button#get-location Allow location
     div.grid-container.homepage-div
         each val in values
             include ./cards/reviewcard
