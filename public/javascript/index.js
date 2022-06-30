@@ -1,43 +1,61 @@
-
-let divsList=  document.querySelectorAll('#faq')
-let divsArray = [...divsList]
-divsArray.forEach(div =>{
-    div.addEventListener('click', function(){
-        let text = document.getElementById(div.children[2].id)
-        div.classList.toggle('faq-show')
-        text.classList.toggle('faq-hidden')
-        text.classList.toggle('text-show')
-        text.classList.add("animate");
-  
-        
-    })
-});
-
-function myFunction() {
-    var x = document.getElementById("myTopNav");
-    if (x.className === "topnav") {
-      x.className += " responsive";
-    } else {
-      x.className = "topnav";
-    }
-}
-
 const mediaPhone = window.matchMedia("(max-width: 425px)");
 const mediaLaptop = window.matchMedia("(max-width: 1440px)");
 const mediaTablet = window.matchMedia("(max-width: 768px)");
+const divsList=  document.querySelectorAll('#faq');
+const divsArray = [...divsList];
+const navbar = document.getElementById('myTopNav');
+const dataList = document.getElementById('categories');
+const categoriesInput  = document.getElementById('categoriesInput');
+const categoriesBtn  = document.getElementById('categoriesBtn');
 
-// displaying cards on homepage
+
+showFAQtext();
+displayCards();
+window.addEventListener('resize', displayCards);
+//event listener for location button
+if(document.getElementById('get-location')){
+    document.getElementById('get-location').addEventListener('click', getLocation);
+}
+if(dataList){
+    renderDataList();
+    categoriesBtn.addEventListener('click', function(){
+        categoriesInput.value = categoriesInput.value.toLowerCase().replace(/ /g, '_');
+    })
+}
+
+
+// FAQ text
+function showFAQtext(){
+    divsArray.forEach(div =>{
+        div.addEventListener('click', function(){
+            let text = document.getElementById(div.children[2].id)
+            div.classList.toggle('faq-show')
+            text.classList.toggle('faq-hidden')
+            text.classList.toggle('text-show')
+            text.classList.add("animate");
+        })
+    });
+}
+
+// NAVBAR
+function responsiveNavbar() {
+    if (navbar.className === "topnav") {
+        navbar.className += " responsive";
+    } else {
+        navbar.className = "topnav";
+    }
+}
+
+// displaying cards on homepages
 function displayCards(){
     const cards = document.querySelectorAll('.card-container')
     let numOfCardsPerRow;
-    if(mediaPhone.matches){
+    if(mediaTablet.matches){
         numOfCardsPerRow = 1;
-    }else if(mediaTablet.matches){
-        numOfCardsPerRow = 2;
     } else if(mediaLaptop.matches){
-        numOfCardsPerRow = 3;
+        numOfCardsPerRow = 2;
     }else {
-        numOfCardsPerRow = 4;
+        numOfCardsPerRow = 3;
     }
     let row = 1;
     let column = 1;
@@ -45,16 +63,13 @@ function displayCards(){
         card.style['grid-row-start'] = row;
         card.style['grid-column-start'] = column;
         column++;
-        if(column === numOfCardsPerRow){
+        if(column === numOfCardsPerRow+1){
             row++;
             column = 1;
         }
     })
 };
 
-displayCards();
-//the below line of code is not working properly
-window.addEventListener('resize', displayCards);
 
 //get user location
 function getLocation() {
@@ -86,15 +101,27 @@ function success(position) {
     window.location.replace('/reviewApp');
 
 }
-
 function error() {
     console.log('Geolocation error!');
     alert('Cannot get nearby places if location is not allowed\n Please visit this page to learn how to get your location: \n https://support.google.com/chrome/answer/142065?hl=en');
     window.location.replace('/reviewApp');
 }
 
-//event listener for location button
-if(document.getElementById('get-location')){
-    document.getElementById('get-location').addEventListener('click', getLocation);
+//--------SHOW DATA LIST FOR CATEGORIES ------
+function renderDataList(){
+    //make api call
+    fetch('/reviewApp/categories', {
+        method: 'GET'
+    })
+    .then(response =>response.json())
+    .then(data =>{
+        console.log('Success:', data)
+        data[0].categories.forEach(category =>{
+            dataList.innerHTML += `<option value="${category.replace(/_/g, ' ').replace(/\b\w/g, c => c. toUpperCase())}"></option>`
+        })
+    })
+    .catch(error =>{
+        console.log('Error:', error)
+    })
 }
 

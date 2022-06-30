@@ -1,0 +1,33 @@
+div.search-filter-div
+    div.search-div
+        h1 Hi! Find locations.
+        input(type="text" placeholder="location name").search-input
+        br
+        button(type="submit").btn.search-btn Search
+        h1 Select one of the below categories
+    div.categories-div
+        a(href="/reviewApp/?category=bank") 
+            img(src="/images/categories/bank.png", alt="")
+        a(href="/reviewApp/?category=library") 
+            img(src="/images/categories/book.png", alt="")
+        a(href="/reviewApp/?category=church") 
+            img(src="/images/categories/church.png", alt="")
+        a(href="/reviewApp/?category=gym") 
+            img(src="/images/categories/gym.png", alt="")
+        a(href="/reviewApp/?category=hospital") 
+            img(src="/images/categories/hospital.png", alt="")
+        a(href="/reviewApp/?category=cafe") 
+            img(src="/images/categories/coffee-cup.png", alt="")
+        a(href="/reviewApp/?category=restaurant") 
+            img(src="/images/categories/restaurant.png", alt="")
+        a(href="/reviewApp/?category=car_repair") 
+            img(src="/images/categories/support.png", alt="")
+    div.search-category-div
+        h1 Or search another category
+        form(action="/reviewApp/?category=", method="get") 
+            input(type="text" placeholder="category name" list="categories" name="category" id="categoriesInput").search-input
+            datalist#categories
+            br
+            button(type="submit" id="categoriesBtn").btn.search-btn Search
+
+

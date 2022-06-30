@@ -1,4 +1,4 @@
-const {Review, User} = require('../models/models')
+const {Review, User, Category} = require('../models/models');
 const {
     asyncWrapper
 } = require('../middleware/async');
@@ -19,12 +19,14 @@ const userLocation = asyncWrapper(async (req, res, next)=>{
     User.findOneAndUpdate(query, update, options, function(error, result) {
         if (error) return;
         res.status(200).json(result);
-        next();
     })
 })
 
 const getAllReviews = asyncWrapper(async (req, res, next) => {
-    const category = '';
+    let category = req.query.category;
+    if(category === undefined){
+        category = '';
+    }
     const completeData = [];
     let userLocation = '';
     const radius = 50000;
@@ -53,13 +55,16 @@ const getAllReviews = asyncWrapper(async (req, res, next) => {
         }
     }
     res.status(200).render('homepage', {reviews:completeData});
-    next();
 });
 
-
+const getCategories= asyncWrapper(async (req, res, next)=>{
+    const categories = await Category.find();
+    res.status(200).json(categories)
+})
 
 
 module.exports = {
     getAllReviews,
     userLocation,
+    getCategories
 };

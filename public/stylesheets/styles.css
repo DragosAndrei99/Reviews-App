@@ -11,6 +11,11 @@ body {
     background-color: #a13f36;
     padding: 1%;
     overflow: hidden;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    /* in front of all other elements */
+    z-index: 99;
 }
 .topnav a {
     color: black;
@@ -52,7 +57,12 @@ body {
     }
 }
 @media screen and (max-width: 800px) {
-    .topnav.responsive {position: relative;}
+    .topnav.responsive {
+        position: sticky;
+        position: -webkit-sticky;
+        top: 0;
+        z-index: 99;
+    }
     .topnav.responsive a.icon {
       position: absolute;
       right: 0;
@@ -426,6 +436,21 @@ span {
         border-radius: 12px;
     }
 }
+
+@media screen and (max-width:900px) {
+    .newsletter-header {
+        font-weight: 700;
+        font-size: 4vw;
+        line-height: 90%;
+        text-align: center;
+    }
+    .newsletter-text {
+        font-weight: 450;
+        font-size: 2vw;
+        line-height: 150%;
+    }
+
+}
 .contact-div {
     text-align: center;
     padding-top: 10%;
@@ -446,8 +471,6 @@ span {
     grid-column-start:2;
 }
 .contact-info {
-    /* display: flex;
-    justify-content: space-around; */
     grid-column-start: 3;
     grid-column-end:4;
 }
@@ -512,4 +535,64 @@ hr {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+}
+
+/* SEARCH-FILTER */
+
+.search-filter-div {
+    padding: 3%;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+}
+.search-div{
+    text-align: center;
+    width: 100%;
+
+}
+.categories-div{
+    display: inline-flex;
+    width: 70%;
+    justify-content: space-around;
+}
+.categories-div a {
+    display: block;
+    width: 4vw;
+    height:auto;
+}
+.categories-div img {
+    width: 100%;
+    height: auto;
+}
+.search-category-div {
+    text-align: center;
+    width: 100%;
+}
+.search-div .orange-button {
+    width: 5%;
+}
+.search-input {
+    padding: 0.1%;
+    background-color: #cb9378;
+    font-weight: 500;
+    font-size: 1.2vw;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+    width: 15%;
+    border-radius: 20px;
+}
+.search-btn {
+    margin-top:5px;
+    border-radius: 20px;
+    background-color: #cb9378;
+    font-weight: 5000;
+    font-size: 1.2vw;
+    line-height: 40%;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+    padding: 14px;
 }

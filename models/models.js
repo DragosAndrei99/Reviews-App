@@ -15,8 +15,13 @@ const userSchema = new mongoose.Schema({
     userLocation: Object
 })
 
+const categorySchema = new mongoose.Schema({
+    categories: Array
+})
+
+const Category = mongoose.model('Categories', categorySchema, 'categories');
 const Review = mongoose.model('Reviews', reviewSchema, 'reviews');
 const User = mongoose.model('Users', userSchema, 'users');
 
 
-module.exports = {Review, User}
+module.exports = {Review, User, Category}

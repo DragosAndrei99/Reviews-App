@@ -3,12 +3,12 @@ nav.topnav#myTopNav
   a(href='/#about') About
   a(href='/#features') Features
   a(href='/#faq') FAQ
-  a(href="javascript:void(0)" onclick='myFunction()').icon
+  a(href="javascript:void(0)" onclick='responsiveNavbar()').icon
     i.fa.fa-bars
   div.second-navbar
     if isAuth === true
       div.profile-div
-        img(src=profilePic, alt="App Logo").profile-img
+        img(src=profilePic, alt="Profile").profile-img
         span.username=username
       a#loginButton(href='/logout') Logout
     else 
