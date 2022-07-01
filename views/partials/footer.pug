@@ -4,10 +4,8 @@ div.grid-container.newsletter-and-contact-div
     div.form-div
       h1.newsletter-header Sign up to our newsletter!
       p.newsletter-text Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sollicitudin sapien et ex sagittis eleifend ut.
-      form(method='POST' action='/newsletter-sign-up')
-        input.form-control.newsletter-input(type='text' aria-describedby='emailHelp' placeholder='email address' name='newsletter')
-        a.btn.newsletter-btn(type='submit') Subscribe
-
+        input.form-control.newsletter-input#emailInput(type="text" placeholder="email address" name="email")
+        btn.btn.newsletter-btn#subscribeNewsletter(type="submit" onclick="subscribeToNewsLetter()") Subscribe
     div.cloud2-div
       img.cloud2(src="/images/Vector.png", alt="").clouds
     div.grid-container.contact-div 

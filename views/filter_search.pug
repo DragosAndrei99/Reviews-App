@@ -1,9 +1,10 @@
 div.search-filter-div
     div.search-div
         h1 Hi! Find locations.
-        input(type="text" placeholder="location name").search-input
-        br
-        button(type="submit").btn.search-btn Search
+        form(action="/reviewApp/search?locationName=", method="get") 
+            input(type="text" placeholder="location name" name="locationName").search-input
+            br
+            button(type="submit").btn.search-btn Search
         h1 Select one of the below categories
     div.categories-div
         a(href="/reviewApp/?category=bank") 

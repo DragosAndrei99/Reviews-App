@@ -4,10 +4,11 @@ block content
     - var values = reviews
     div.homepage-navigation
         if values.length < 1
-            h1 Welcome to my app
+            h1 We were not able to find what you are looking for
             h5 Please allow location for this site to get started
+            h5 Or select one of the categories below
             button#get-location Allow location
-    include ./filter    
+    include ./filter_search
     div.grid-container.homepage-div
         each val in values
             include ./cards/reviewcard

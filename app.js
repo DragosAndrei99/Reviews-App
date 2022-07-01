@@ -8,6 +8,13 @@ const { requiresAuth } = require('express-openid-connect');
 const { notFound }  = require('./middleware/not-found')
 const { errorHandlerMiddleware }  = require('./middleware/error-handler')
 const path = require('path');
+const mailchimp = require("@mailchimp/mailchimp_marketing");
+
+const mailchimpApiKey = process.env.MAILCHIMP_API_KEY;
+mailchimp.setConfig({
+    apiKey: mailchimpApiKey,
+    server: "us9",
+})
 
 //auth config
 const config = {
@@ -46,6 +53,32 @@ app.use('/', async (req, res, next)=>{
 app.get('/', async (req, res, next)=>{
     res.render('index')
     next();
+});
+
+//mailchimp newsletter
+app.post('/audience/add/member', (req, res, next) => {
+    const email = req.body.email
+    const listID = process.env.MAILCHIMP_LIST_ID;
+    const addListMember = async () => {
+        try {
+            const response = await  mailchimp.lists.addListMember(listID, {
+                email_address: email,
+                status: 'subscribed',
+                email_type: 'html',
+                merge_fields: {
+                    FNAME: '1',
+                    LNAME: '2'
+                },
+                tags: ['1']
+            })
+            res.send(response)
+        }
+        catch (err) {
+            console.log(err)
+            res.status(400).send(err)
+        }
+    }
+  addListMember();
 });
 
 //routes

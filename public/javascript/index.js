@@ -7,10 +7,13 @@ const navbar = document.getElementById('myTopNav');
 const dataList = document.getElementById('categories');
 const categoriesInput  = document.getElementById('categoriesInput');
 const categoriesBtn  = document.getElementById('categoriesBtn');
+const cards = document.querySelectorAll('.card-container');
 
 
 showFAQtext();
-displayCards();
+if(cards){
+    displayCards();
+}
 window.addEventListener('resize', displayCards);
 //event listener for location button
 if(document.getElementById('get-location')){
@@ -48,7 +51,6 @@ function responsiveNavbar() {
 
 // displaying cards on homepages
 function displayCards(){
-    const cards = document.querySelectorAll('.card-container')
     let numOfCardsPerRow;
     if(mediaTablet.matches){
         numOfCardsPerRow = 1;
@@ -125,3 +127,17 @@ function renderDataList(){
     })
 }
 
+const subscribeNewsletter = document.getElementById('subscribeNewsletter');
+const emailInput = document.getElementById('emailInput');
+function subscribeToNewsLetter(){
+    console.log(emailInput.value)
+    fetch("/audience/add/member", {
+        method: "POST",
+        headers: {'Content-Type': 'application/json'}, 
+        body: JSON.stringify({email: emailInput.value})
+      }).then(res => {
+        console.log("Request complete! response:", res);
+      }).catch(error =>{
+        console.log("Error: ", error)
+      })
+}

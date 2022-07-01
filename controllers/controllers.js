@@ -3,7 +3,7 @@ const {
     asyncWrapper
 } = require('../middleware/async');
 
-const {getNearbyPlaces, getDetailedPlaceInfo} = require('../scripts/scripts');
+const {getNearbyPlaces, getDetailedPlaceInfo, getSearchedPlace, setReviews} = require('../scripts/scripts');
 
 const userLocation = asyncWrapper(async (req, res, next)=>{
     const longitude = req.body.position.longitude
@@ -62,9 +62,14 @@ const getCategories= asyncWrapper(async (req, res, next)=>{
     res.status(200).json(categories)
 })
 
+const getReviewsOfPlace = asyncWrapper(async(req, res, next)=>{
+    const data = await getSearchedPlace(req.query.locationName)
+    res.status(200).render('homepage', {reviews: setReviews(data)})
+})
 
 module.exports = {
     getAllReviews,
     userLocation,
-    getCategories
+    getCategories,
+    getReviewsOfPlace,
 };
