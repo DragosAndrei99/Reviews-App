@@ -1,0 +1,6 @@
+extends layout.pug
+
+block content
+    h3 
+    div#map
+    script(src=`https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap&v=weekly` defer='')

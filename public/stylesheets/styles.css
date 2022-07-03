@@ -596,3 +596,16 @@ hr {
     color: #FFFFFF;
     padding: 14px;
 }
+
+/* ADD REVIEW */
+input[type="range"]{
+    width: 30vw;
+}
+
+
+#map {
+    height: 30vw;
+    /* The height is 400 pixels */
+    width: 100%;
+    /* The width is the width of the web page */
+  }

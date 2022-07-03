@@ -67,9 +67,32 @@ const getReviewsOfPlace = asyncWrapper(async(req, res, next)=>{
     res.status(200).render('homepage', {reviews: setReviews(data)})
 })
 
+const addReview = asyncWrapper(async(req, res, next)=>{
+    const locationName = req.query.locationName;
+    if (locationName) {
+        const data = await getSearchedPlace(req.query.locationName)
+        const locationCoords = data.result.geometry.location
+        return  res.status(200).render('add_review', {locationCoords});
+
+    }
+    return res.status(200).render('add_review');
+})
+
+const getLocation = asyncWrapper(async(req, res, next)=>{
+    const user = await User.findOne({username:req.oidc.user.nickname}).exec();
+    let userLocation = '';
+    if(user && user.userLocation){
+        userLocation = user.userLocation;
+    }
+    res.status(200).json(userLocation)
+})
+
+
 module.exports = {
     getAllReviews,
     userLocation,
     getCategories,
     getReviewsOfPlace,
+    addReview,
+    getLocation
 };

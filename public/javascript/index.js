@@ -127,6 +127,7 @@ function renderDataList(){
     })
 }
 
+//newsletter
 const subscribeNewsletter = document.getElementById('subscribeNewsletter');
 const emailInput = document.getElementById('emailInput');
 function subscribeToNewsLetter(){
@@ -141,3 +142,42 @@ function subscribeToNewsLetter(){
         console.log("Error: ", error)
       })
 }
+
+//get user location 
+async function getLocation(){
+    let coords = '';
+    await fetch("/reviewApp/addReview/location", {
+        method: 'GET'
+    }).then(res => res.json()
+    ).then(data =>{
+        coords =  {lat: data.latitude, lng:data.longitude}
+    }).catch(error =>{
+        console.log(error)
+    })
+    return coords
+}
+
+const mapDiv = document.getElementById("map");
+async function initMap(zoom = 10) {
+    const coords = await getLocation();
+    const map = new google.maps.Map(mapDiv, {
+      zoom: zoom,
+      center: coords,
+    });
+    const marker = new google.maps.Marker({
+      position: coords,
+      map: map,
+    });
+}
+if(mapDiv){
+    window.initMap = initMap;
+    const outputZoom = document.getElementById('outputZoom');
+    const inputZoom = document.getElementById('inputZoom');
+
+    inputZoom.addEventListener('change', function(){
+        let zoom = parseInt(outputZoom.innerText);
+        initMap(zoom);
+    })
+}
+
+console.log(locationCoords)

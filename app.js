@@ -9,6 +9,8 @@ const { notFound }  = require('./middleware/not-found')
 const { errorHandlerMiddleware }  = require('./middleware/error-handler')
 const path = require('path');
 const mailchimp = require("@mailchimp/mailchimp_marketing");
+require('dotenv').config();
+const apiKey = process.env.API_KEY;
 
 const mailchimpApiKey = process.env.MAILCHIMP_API_KEY;
 mailchimp.setConfig({
@@ -42,7 +44,7 @@ app.use('/js', express.static(path.join(__dirname, 'node_modules/jquery/dist')))
 //check if user is logged in
 app.use('/', async (req, res, next)=>{
     if(req.oidc.user){
-        res.locals = {isAuth: true, username:req.oidc.user.name, profilePic:req.oidc.user.picture};
+        res.locals = {isAuth: true, username:req.oidc.user.name, profilePic:req.oidc.user.picture, apiKey};
     } else {
         res.locals = {isAuth: false};
     }

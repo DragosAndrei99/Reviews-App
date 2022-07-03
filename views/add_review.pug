@@ -1,0 +1,26 @@
+extends layout.pug
+
+block content
+    div.search-category-div
+        h1 First, let's search for a location
+        form(action="/reviewApp/addReview/?locationName=" method="get") 
+            input(type="text" name="locationName").search-input
+            br
+            button(type="submit").btn.search-btn Search
+    div.search-category-div
+        h1 Or get locations near you
+        form(action="/reviewApp/addReview", method="get") 
+            label(for="radius") Zoom:
+            br
+            input#inputZoom(type="range" min="0" max="20" oninput="this.nextElementSibling.value = this.value" step="0.5")
+            output#outputZoom 10
+            br
+            button(type="submit").btn.search-btn Search
+    div#map
+
+
+    script(src=`https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap&v=weekly` defer='')
+    if locationCoords 
+        script(type="text/javascript").
+            let locationCoords = !{JSON.stringify(locationCoords)}
+            
