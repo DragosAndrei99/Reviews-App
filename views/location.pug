@@ -1,6 +1,7 @@
-extends layout.pug
-
-block content
-    h3 
-    div#map
-    script(src=`https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap&v=weekly` defer='')
+div.card-container.location-container
+    - const {locationName,locationPics, locationAddress, openHours, rating, reviews } = locationData
+    h1=locationName
+    p=locationAddress
+    p=openHours 
+    p=rating
+    p=reviews 

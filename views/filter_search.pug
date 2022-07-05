@@ -1,11 +1,11 @@
 div.search-filter-div
     div.search-div
-        h1 Hi! Find locations.
+        h1 Hi! Find reviews of locations:
         form(action="/reviewApp/search?locationName=", method="get") 
             input(type="text" placeholder="location name" name="locationName").search-input
             br
             button(type="submit").btn.search-btn Search
-        h1 Select one of the below categories
+        h1 Or find reviews of locations by different location categories:
     div.categories-div
         a(href="/reviewApp/?category=bank") 
             img(src="/images/categories/bank.png", alt="")
@@ -24,13 +24,13 @@ div.search-filter-div
         a(href="/reviewApp/?category=car_repair") 
             img(src="/images/categories/support.png", alt="")
     div.search-category-div
-        h1 Or search another category
+        h1 Search another category:
         form(action="/reviewApp/?category=", method="get") 
             input(type="text" placeholder="category name" list="categories" name="category" id="categoriesInput").search-input
             datalist#categories
             br
             button(type="submit" id="categoriesBtn").btn.search-btn Search
     div.search-category-div
-        h1 Or add your own review
+        h1 Or add your own review:
         a(href="/reviewApp/addReview").btn.search-btn Add a review 
 

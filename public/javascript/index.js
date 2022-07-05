@@ -160,14 +160,25 @@ async function getLocation(){
 const mapDiv = document.getElementById("map");
 async function initMap(zoom = 10) {
     const coords = await getLocation();
-    const map = new google.maps.Map(mapDiv, {
-      zoom: zoom,
-      center: coords,
-    });
-    const marker = new google.maps.Marker({
-      position: coords,
-      map: map,
-    });
+    if(typeof locationCoords === 'object'){
+        const map = new google.maps.Map(mapDiv, {
+            zoom: zoom,
+            center: locationCoords,
+        });
+        const marker = new google.maps.Marker({
+            position: locationCoords,
+            map: map,
+        });
+    } else {
+        const map = new google.maps.Map(mapDiv, {
+            zoom: zoom,
+            center: coords,
+        });
+        const marker = new google.maps.Marker({
+            position: coords,
+            map: map,
+        });
+    }
 }
 if(mapDiv){
     window.initMap = initMap;
@@ -180,4 +191,3 @@ if(mapDiv){
     })
 }
 
-console.log(locationCoords)

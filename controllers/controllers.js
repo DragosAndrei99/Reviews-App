@@ -3,7 +3,7 @@ const {
     asyncWrapper
 } = require('../middleware/async');
 
-const {getNearbyPlaces, getDetailedPlaceInfo, getSearchedPlace, setReviews} = require('../scripts/scripts');
+const {getNearbyPlaces, getDetailedPlaceInfo, getSearchedPlace, setReviews, getFormattedAddress} = require('../scripts/scripts');
 
 const userLocation = asyncWrapper(async (req, res, next)=>{
     const longitude = req.body.position.longitude
@@ -72,7 +72,18 @@ const addReview = asyncWrapper(async(req, res, next)=>{
     if (locationName) {
         const data = await getSearchedPlace(req.query.locationName)
         const locationCoords = data.result.geometry.location
-        return  res.status(200).render('add_review', {locationCoords});
+        console.log(data)
+        return  res.status(200).render('add_review', {
+            locationCoords, 
+            locationData:
+            {
+                locationName: data.result.name,
+                locationPics: data.result.photos,
+                locationAddress:getFormattedAddress(data.result.adr_address),
+                openHours: data.result.opening_hours.weekday_text,
+                rating: data.result.rating,
+                reviews:data.result.reviews
+            }});
 
     }
     return res.status(200).render('add_review');

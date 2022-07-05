@@ -36,7 +36,7 @@ function getDetailedPlaceInfo(data){
     config.url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&key=${apiKey}`;
     return apiCall(config).then(response =>{
         return response
-    });
+    }); 
 }
 function getSearchedPlace(textInput){
     config.method = 'get';
@@ -51,7 +51,7 @@ function setReviews(data){
         for(review of data.result.reviews){
             completeReviews.push({
                 locationName: data.result.name,
-                address: data.result.adr_address.includes('span') ? data.result.adr_address.replace(/<[^>]*>/g, '') : data.result.adr_address,
+                address: getFormattedAddress(data.result.adr_address),
                 reviewerProfilePicSrc: review.profile_photo_url,
                 reviewerName: review.author_name,
                 rating: review.rating,
@@ -64,4 +64,11 @@ function setReviews(data){
     return completeReviews;
 }
 
-module.exports = {getNearbyPlaces, getDetailedPlaceInfo, getSearchedPlace, setReviews}
+function getFormattedAddress(address){
+    if(address.includes('span')){
+        return address.replace(/<[^>]*>/g, '');
+    }
+    return address;
+}
+
+module.exports = {getNearbyPlaces, getDetailedPlaceInfo, getSearchedPlace, setReviews, getFormattedAddress}

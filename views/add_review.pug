@@ -16,11 +16,13 @@ block content
             output#outputZoom 10
             br
             button(type="submit").btn.search-btn Search
+
+
+    if locationCoords 
+        include ./location
+        script(type="text/javascript").
+            const locationCoords = !{JSON.stringify(locationCoords)}
+
     div#map
 
-
     script(src=`https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap&v=weekly` defer='')
-    if locationCoords 
-        script(type="text/javascript").
-            let locationCoords = !{JSON.stringify(locationCoords)}
-            
